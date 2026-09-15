@@ -18,6 +18,10 @@ on: [workflow_dispatch, push]
 env:
   PKG_NAME: "terraform-provider-aws"
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   # Detects the Go toolchain version to use for product builds.
   #
