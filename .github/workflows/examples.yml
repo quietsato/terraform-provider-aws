@@ -20,10 +20,6 @@ on:
 env:
   AWS_DEFAULT_REGION: us-west-2
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
-
 jobs:
   tflint:
     runs-on: ubuntu-latest
